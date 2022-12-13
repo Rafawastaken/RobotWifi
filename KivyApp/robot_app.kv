@@ -1,10 +1,103 @@
 #:kivy 2.2.0
 
 <RobotAppLayout>
-    BoxLayout:
+    MDBoxLayout:
         orientation:"vertical"
         size: root.width, root.height
+        md_bg_color: (0.10, 0.10, 0.10)
 
-        MDRectangleFlatButton:
-            text: "Hello, World"
-            pos_hint: {"center_x": .5, "center_y": .5}
+        MDLabel:
+            text: "WIFI ROBOT"
+            halign: "center"
+            theme_text_color: "Secondary"
+            theme_font_styles: "Button"
+            size_hint: (1, .25)
+            font_size: 28
+            color: (128/255, 149/255, 244/255)
+            bold: True
+
+        MDGridLayout:
+            cols: 3
+            rows: 3
+            spacing: "8dp"
+            padding: "8dp", "0pd", "8dp", "10dp"
+
+            RoundedButton:
+                background_color: (0, 0, 0, 0)
+                text:"Light"
+                font_size:16
+                on_press: root.send_comand('light')
+
+            RoundedButton:
+                text:"Up"
+                font_size:16
+                on_release: root.send_comand('forward')
+
+            RoundedButton:
+                text:"Horn"
+                font_size:16
+                on_release: root.send_comand('horn')
+
+            RoundedButton:
+                text:"Left"
+                font_size:16
+                on_release: root.send_comand('left')
+
+            RoundedButton:
+                text:"Stop"
+                font_size:16
+                on_release: root.send_comand('stop')
+
+            RoundedButton:
+                text:"Right"
+                font_size:16
+                on_release: root.send_comand('right')
+
+            RoundedButton:
+                text:"Auto"
+                font_size:12
+                on_release: root.send_comand('auto')
+
+            RoundedButton:
+                text:"Back"
+                font_size:16
+                on_release: root.send_comand('backwards')
+
+            RoundedButton:
+                text:"func"
+                font_size:12
+                on_release: root.send_comand('func')
+
+
+            
+        
+        MDLabel:
+            text: "By @Rafawastaken"
+            halign: "center"
+            theme_text_color: "Secondary"
+            theme_font_styles: "Button"
+            size_hint: (1, .25)
+            font_size: 12
+            color: (128/255, 149/255, 244/255, .5)
+
+                
+
+
+
+
+<RoundedButton@Button>
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+
+    size_hint: (1, None)
+    height: 45
+
+
+    canvas.before:
+        Color:
+            rgba: (48/255,84/255,150/255,1)
+
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [15]
